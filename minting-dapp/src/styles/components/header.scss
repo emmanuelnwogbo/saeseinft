@@ -1,0 +1,17 @@
+.header {
+  height: #{scaleValue(100)};
+  display: flex;
+  justify-content: space-between;
+
+  @media only screen and (max-width: 414px) {
+
+    & figure {
+      height: #{scaleValue(700)};
+
+      & img {
+        object-fit: cover;
+        height: 100%;
+      }
+    }
+  }
+}
