@@ -1,6 +1,5 @@
 {
-    "name": "@hashlips-lab/nft-erc721-collection-dapp",
-    "homepage": "https://saeseinft.vercel.app/",
+    "name": "saiseimint",
     "version": "1.0.0",
     "devDependencies": {
         "@babel/preset-react": "^7.0.0",
