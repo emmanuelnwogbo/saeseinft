@@ -81,8 +81,8 @@ export default class Dapp extends React.Component<Props, State> {
     this.provider = new ethers.providers.Web3Provider(browserProvider);
 
     this.registerWalletEvents(browserProvider);
-
-    await this.initWallet();
+    //await this.connectWallet();
+    //await this.initWallet();
   }
 
   async mintTokens(amount: number): Promise<void>
@@ -111,7 +111,8 @@ export default class Dapp extends React.Component<Props, State> {
 
   private isWalletConnected(): boolean
   {
-    return this.state.userAddress !== null;
+    console.log(this.state.userAddress)
+    return true; //this.state.userAddress !== null;
   }
 
   private isContractReady(): boolean
@@ -167,14 +168,6 @@ export default class Dapp extends React.Component<Props, State> {
           <>
             {this.isContractReady() ?
               <>
-                {/*<CollectionStatus
-                  userAddress={this.state.userAddress}
-                  maxSupply={this.state.maxSupply}
-                  totalSupply={this.state.totalSupply}
-                  isPaused={this.state.isPaused}
-                  isWhitelistMintEnabled={this.state.isWhitelistMintEnabled}
-                  isUserInWhitelist={this.state.isUserInWhitelist}
-                />*/}
                 {this.state.totalSupply < this.state.maxSupply ?
                   <MintWidget
                     maxSupply={this.state.maxSupply}
@@ -203,7 +196,7 @@ export default class Dapp extends React.Component<Props, State> {
                  fontSize: '4rem'
                 }
               }>
-                Loading...
+                Initializing Saisei...
               </div>
             }
           </>
@@ -283,6 +276,7 @@ export default class Dapp extends React.Component<Props, State> {
   private async initWallet(): Promise<void>
   {
     const walletAccounts = await this.provider.listAccounts();
+    console.log(walletAccounts)
     
     this.setState(defaultState);
 

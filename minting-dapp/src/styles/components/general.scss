@@ -42,3 +42,13 @@ html {
     margin: 0 #{scaleValue(20)};
   }
 }
+
+.uYscM {
+  left: 0 !important;
+  top: 0 !important;
+  position: fixed !important;
+  z-index: 9 !important;
+  width: 100vw !important;
+  padding: 0 !important;
+  height: 100vh !important;
+}

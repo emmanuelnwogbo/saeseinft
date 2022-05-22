@@ -6,6 +6,7 @@
   margin: #{scaleValue(30)} 0;
   color: #fff;
   font-size: #{scaleValue(40)};
+  overflow-x: hidden;
 
   @media only screen and (max-width: 414px) { 
     font-size: #{scaleValue(160)};
