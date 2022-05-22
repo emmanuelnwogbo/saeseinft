@@ -155,6 +155,7 @@ export default class Dapp extends React.Component<Props, State> {
   render() {
     return (
       <>
+        <div className="dapp">
         {this.isNotMainnet() ?
           <span>
           </span>
@@ -227,6 +228,7 @@ export default class Dapp extends React.Component<Props, State> {
               : null}
           </div>
             : null*/}
+        </div>
       </>
     );
   }
