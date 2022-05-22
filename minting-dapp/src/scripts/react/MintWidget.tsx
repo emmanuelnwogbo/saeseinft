@@ -1,5 +1,8 @@
-import { utils, BigNumber } from 'ethers';
+import { Contract, providers, utils, BigNumber, ethers } from 'ethers';
 import React from 'react';
+
+import Web3Modal from "web3modal";
+import WalletConnectProvider from "@walletconnect/ethereum-provider";
 
 import Header from './Header';
 
@@ -17,12 +20,14 @@ interface Props {
 
 interface State {
   mintAmount: number;
-  currentSlide: number
+  currentSlide: number,
+  web3Modal: Web3Modal | null
 }
 
 const defaultState: State = {
   mintAmount: 1,
-  currentSlide: 1
+  currentSlide: 1,
+  web3Modal: null
 };
 
 export default class MintWidget extends React.Component<Props, State> {
@@ -63,12 +68,60 @@ export default class MintWidget extends React.Component<Props, State> {
     await this.props.whitelistMintTokens(this.state.mintAmount);
   }
 
+  private async mintMobild(): Promise<void> {
+    if (this.state.web3Modal !== null) {
+      const web3Provider = await this.state.web3Modal.connect();
+      const accounts = (await web3Provider.enable()) as string[];
+      
+      console.log(accounts)
+    }
+    console.log('mint mobile');
+    /*const providerOptions = {
+      walletconnect: {
+        package: WalletConnect, // required
+        options: {
+          infuraId: "b84b6a3a88fc4655902dba0c9cb32b7a" // required
+        }
+      }
+    };
+
+    const web3Modal = new Web3Modal({
+      network: "mainnet", // optional
+      cacheProvider: true, // optional
+      providerOptions // required
+    });
+
+    const instance = await web3Modal.connect();
+    const provider = new ethers.providers.Web3Provider(instance);
+    const signer = provider.getSigner();
+    console.log(signer)*/
+  }
+
   private toggleslide(): void {
     let currentSlide = this.state.currentSlide;
     currentSlide === 1 ? currentSlide = 2 : currentSlide = 1;
     this.setState({
       currentSlide
     })
+  }
+
+  componentDidMount() {
+    const web3Modal = new Web3Modal({
+      network: "mainnet",
+      cacheProvider: true,
+      providerOptions: {
+        walletconnect: {
+          package: WalletConnectProvider,
+          options: {
+            infuraId: 'b84b6a3a88fc4655902dba0c9cb32b7a',
+          },
+        },
+      },
+    });
+
+    this.setState({
+      web3Modal
+    });
   }
 
   render() {
@@ -96,6 +149,7 @@ export default class MintWidget extends React.Component<Props, State> {
                 <button className="main__controls--increase" onClick={() => this.incrementMintAmount()}>+</button>
               </div>
               <button className="main__controls--primary" onClick={() => this.mint()}>Mint</button>
+              <button className="main__controls--primary main__controls--primary-mobile" onClick={() => this.mintMobild()}>Mint</button>
             </div>
           </div>
           :

@@ -85,6 +85,15 @@
           width: #{scaleValue(900)};
           height: #{scaleValue(270)};
           font-size: #{scaleValue(95)};
+          display: none;
+      }
+
+      &-mobile {
+        display: none;
+        ;
+        @media only screen and (max-width: 414px) { 
+          display: block
+        }
       }
     }
   }
