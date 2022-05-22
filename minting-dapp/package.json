@@ -1,5 +1,6 @@
 {
     "name": "saiseimint",
+    "homepage": "https://saeseinft.vercel.app/",
     "version": "1.0.0",
     "devDependencies": {
         "@babel/preset-react": "^7.0.0",
