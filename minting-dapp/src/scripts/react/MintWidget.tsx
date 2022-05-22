@@ -144,9 +144,9 @@ export default class MintWidget extends React.Component<Props, State> {
 
             <div className="main__controls">
               <div className="main__controls--toggle">
-                <button className="main__controls--decrease" onClick={() => this.decrementMintAmount()}>-</button>
-                <span className="main__controls--amount">{this.state.mintAmount}</span>
-                <button className="main__controls--increase" onClick={() => this.incrementMintAmount()}>+</button>
+                <button className="main__controls--decrease toggle" onClick={() => this.decrementMintAmount()}>-</button>
+                <span className="main__controls--amount toggle">{this.state.mintAmount}</span>
+                <button className="main__controls--increase toggle" onClick={() => this.incrementMintAmount()}>+</button>
               </div>
               <button className="main__controls--primary" onClick={() => this.mint()}>Mint</button>
               <button className="main__controls--primary main__controls--primary-mobile" onClick={() => this.mintMobild()}>Mint</button>
