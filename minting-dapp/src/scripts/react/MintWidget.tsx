@@ -135,15 +135,19 @@ export default class MintWidget extends React.Component<Props, State> {
     return (
       <>
         <Header />
-        <div className="main__top">
-          <figure>
-            <img src="/build/images/leftmint.svg"/>
-          </figure>
-          <figure>
-            <img src="/build/images/rightmint.svg"/>
-          </figure>
-        </div>
-        {this.canMint() ?
+        <div className="main__top" style={{
+          backgroundImage: `url('/build/images/man.png')`
+        }}>
+          <div className="main__top--photos">
+            <figure>
+              <img src="/build/images/leftmint.svg"/>
+            </figure>
+            <figure>
+              <img src="/build/images/rightmint.svg"/>
+            </figure>
+          </div>
+
+          {this.canMint() ?
           <div className="main">
             <div className="main__price">
               <strong></strong> {utils.formatEther(this.props.tokenPrice.mul(this.state.mintAmount))} ETH
@@ -170,7 +174,9 @@ export default class MintWidget extends React.Component<Props, State> {
             Please come back during the next sale!
           </div>
         }
+        </div>
         <div className="main__bottom--padding">
+          <div className="main__bottom--heading">COLLECTION PREVIEW</div>
         <div className="main__bottom">
           <figure className="main__bottom--control" onClick={() => this.toggleslide()}>
             <img src="/build/images/rightarrow.svg"/>

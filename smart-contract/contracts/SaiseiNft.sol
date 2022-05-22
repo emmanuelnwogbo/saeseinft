@@ -107,7 +107,7 @@ contract SaiseiNft is ERC721A, Ownable, ReentrancyGuard {
     if (revealed == false) {
       return hiddenMetadataUri;
     }
-
+    
     string memory currentBaseURI = _baseURI();
     return bytes(currentBaseURI).length > 0
         ? string(abi.encodePacked(currentBaseURI, _tokenId.toString(), uriSuffix))

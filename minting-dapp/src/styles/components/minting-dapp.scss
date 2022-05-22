@@ -1,3 +1,13 @@
+:root {
+  --ideal-viewport-width: 1600;
+}
+
+@function scaleValue($value) {
+  @return calc(
+    #{$value} * (clamp(350px, 100vw, 3840px) / var(--ideal-viewport-width))
+  );
+}
+
 .main {
   padding: 0 #{scaleValue(90)};
   display: flex;
@@ -101,13 +111,20 @@
 
   &__top {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    align-items: center;
     padding: 0 #{scaleValue(380)};
-    margin-top: #{scaleValue(70)};
+    padding-top: #{scaleValue(100)};
+    min-height: #{scaleValue(900)};
+    flex-direction: column;
+
+    background-size: cover;
+    background-position: top;
+    position: relative;
 
     @media only screen and (max-width: 414px) { 
-      margin-top: #{scaleValue(400)};
       padding: 0 #{scaleValue(100)};
+      padding-top: #{scaleValue(500)};
       margin-bottom: #{scaleValue(130)};
       justify-content: center;
 
@@ -116,6 +133,32 @@
 
         &:nth-child(2) {
           display: none;
+        }
+      }
+    }
+
+    &--photos {
+      width: #{scaleValue(980)};
+      display: flex;
+      justify-content: space-between;
+
+      & figure {
+        width: #{scaleValue(430)};
+
+        & img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+
+      @media only screen and (max-width: 414px) { 
+        & figure {
+          width: #{scaleValue(1300)};
+  
+          &:nth-child(2) {
+            display: none;
+          }
         }
       }
     }
@@ -132,6 +175,18 @@
 
       @media only screen and (max-width: 414px) { 
         padding: #{scaleValue(220)} #{scaleValue(90)};
+      }
+    }
+
+    &--heading {
+      color: #fff;
+      font-size:  #{scaleValue(40)};
+      padding:  #{scaleValue(36 )} 0;
+
+      @media only screen and (max-width: 414px) { 
+        color: #fff;
+        font-size:  #{scaleValue(100)};
+        padding:  #{scaleValue(100)} 0;
       }
     }
 
@@ -190,6 +245,13 @@
 
       & figure {
 
+        width: #{scaleValue(500)};
+
+        & img {
+          width: 100%;
+          height: 100%;
+        }
+
           @media only screen and (max-width: 414px) { 
               width: #{scaleValue(1300)};
 
@@ -218,7 +280,7 @@
       text-align: center;
       border-radius: 1rem;
       margin-bottom: #{scaleValue(30)};
-      flex-basis: #{scaleValue(300)};
+      flex-basis: #{scaleValue(270)};
       min-height: #{scaleValue(100)};
       margin-left: #{scaleValue(50)};
       padding:  #{scaleValue(20)} 0;
