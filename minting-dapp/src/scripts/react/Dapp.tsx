@@ -31,6 +31,7 @@ interface State {
   merkleProofManualAddressFeedbackMessage: string|JSX.Element|null;
   errorMessage: string|JSX.Element|null,
   userWhiteListMinted: boolean;
+  connecting: boolean;
 }
 
 const defaultState: State = {
@@ -47,7 +48,8 @@ const defaultState: State = {
   merkleProofManualAddress: '',
   merkleProofManualAddressFeedbackMessage: null,
   errorMessage: null,
-  userWhiteListMinted: false
+  userWhiteListMinted: false,
+  connecting: false
 };
 
 export default class Dapp extends React.Component<Props, State> {
@@ -70,10 +72,10 @@ export default class Dapp extends React.Component<Props, State> {
       this.setError( 
         <>
           We were not able to detect <strong>MetaMask</strong>. We value <strong>privacy and security</strong> a lot so we limit the wallet options on the DAPP.<br />
-          <br />
+          {/*<br />
           But don't worry! <span className="emoji">😃</span> You can always interact with the smart-contract through <a href={this.generateContractUrl()} target="_blank">{this.state.networkConfig.blockExplorer.name}</a> and <strong>we do our best to provide you with the best user experience possible</strong>, even from there.<br />
           <br />
-          You can also get your <strong>Whitelist Proof</strong> manually, using the tool below.
+          You can also get your <strong>Whitelist Proof</strong> manually, using the tool below.*/}
         </>,
       );
     }
@@ -81,7 +83,7 @@ export default class Dapp extends React.Component<Props, State> {
     this.provider = new ethers.providers.Web3Provider(browserProvider);
 
     this.registerWalletEvents(browserProvider);
-    //await this.connectWallet();
+    await this.connectWallet();
     //await this.initWallet();
   }
 
@@ -164,7 +166,21 @@ export default class Dapp extends React.Component<Props, State> {
 
         {this.state.errorMessage ? <div className="error"><p>{this.state.errorMessage}</p><button onClick={() => this.setError()}>X</button></div> : null}
         
-        {this.isWalletConnected() ?
+        <MintWidget
+          maxSupply={this.state.maxSupply}
+          totalSupply={this.state.totalSupply}
+          tokenPrice={this.state.tokenPrice}
+          maxMintAmountPerTx={this.state.maxMintAmountPerTx}
+          isPaused={this.state.isPaused}
+          isWhitelistMintEnabled={this.state.isWhitelistMintEnabled}
+          isUserInWhitelist={this.state.isUserInWhitelist}
+          mintTokens={(mintAmount) => this.mintTokens(mintAmount)}
+          whitelistMintTokens={(mintAmount) => this.whitelistMintTokens(mintAmount)}
+          connectWallet={() => this.connectWallet()}
+          connecting={this.state.connecting}
+          userAddress={this.state.userAddress}
+        />
+        {/*this.isWalletConnected() ?
           <>
             {this.isContractReady() ?
               <>
@@ -179,6 +195,7 @@ export default class Dapp extends React.Component<Props, State> {
                     isUserInWhitelist={this.state.isUserInWhitelist}
                     mintTokens={(mintAmount) => this.mintTokens(mintAmount)}
                     whitelistMintTokens={(mintAmount) => this.whitelistMintTokens(mintAmount)}
+                    connectWallet={() => this.connectWallet}
                   />
                   :
                   <div className="collection-sold-out">
@@ -200,7 +217,7 @@ export default class Dapp extends React.Component<Props, State> {
               </div>
             }
           </>
-        : null}
+        : null*/}
 
         {/*!this.isWalletConnected() || !this.isSoldOut() ?
           <div className="no-wallet">
@@ -265,6 +282,10 @@ export default class Dapp extends React.Component<Props, State> {
   private async connectWallet(): Promise<void>
   {
     try {
+      this.setState({
+        connecting: true
+      });
+
       await this.provider.provider.request!({ method: 'eth_requestAccounts' });
 
       this.initWallet();
@@ -322,7 +343,7 @@ export default class Dapp extends React.Component<Props, State> {
       tokenPrice: await this.contract.cost(),
       isPaused: await this.contract.paused(),
       isWhitelistMintEnabled: await this.contract.whitelistMintEnabled(),
-      isUserInWhitelist: Whitelist.contains(this.state.userAddress ?? ''),
+      isUserInWhitelist: Whitelist.contains(this.state.userAddress ?? '')
     });
   }
 

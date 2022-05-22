@@ -16,6 +16,9 @@ interface Props {
   isUserInWhitelist: boolean,
   mintTokens(mintAmount: number): Promise<void>,
   whitelistMintTokens(mintAmount: number): Promise<void>
+  connectWallet: Function
+  connecting: Boolean,
+  userAddress: string|null;
 }
 
 interface State {
@@ -97,6 +100,10 @@ export default class MintWidget extends React.Component<Props, State> {
     console.log(signer)*/
   }
 
+  private connect(): void {
+
+  }
+
   private toggleslide(): void {
     let currentSlide = this.state.currentSlide;
     currentSlide === 1 ? currentSlide = 2 : currentSlide = 1;
@@ -148,8 +155,11 @@ export default class MintWidget extends React.Component<Props, State> {
                 <span className="main__controls--amount toggle">{this.state.mintAmount}</span>
                 <button className="main__controls--increase toggle" onClick={() => this.incrementMintAmount()}>+</button>
               </div>
-              <button className="main__controls--primary" onClick={() => this.mint()}>Mint</button>
               <button className="main__controls--primary main__controls--primary-mobile" onClick={() => this.mintMobild()}>Mint</button>
+              {
+                this.props.userAddress ? <button className="main__controls--primary" onClick={() => this.mint()}>Mint</button> : 
+                <button className="main__controls--primary">{this.props.connecting ? 'Connecting' : 'Connect'}</button>
+                }
             </div>
           </div>
           :
