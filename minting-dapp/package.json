@@ -1,7 +1,7 @@
 {
     "name": "saiseimint",
     "version": "1.0.0",
-    "homepage": "https://saeseinft.vercel.app/",
+    "homepage": "https://saeseinft.vercel.app",
     "devDependencies": {
         "@babel/preset-react": "^7.0.0",
         "@metamask/detect-provider": "^1.2.0",
