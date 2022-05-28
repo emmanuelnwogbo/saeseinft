@@ -45,13 +45,21 @@
 
   &__social {
       display: flex;
-      width: #{scaleValue(220)};
+      width: #{scaleValue(320)};
       justify-content: space-between;
       align-items: center;
       padding-right: #{scaleValue(90)};
 
       & span {
         cursor: pointer;
+
+        &.etherscan {
+          font-weight: 500;
+          font-size: #{scaleValue(18)};
+          text-decoration: underline;
+          color: #000000;
+          opacity: .8;
+        }
 
         & svg {
           height: #{scaleValue(100)};
@@ -63,7 +71,7 @@
           }
         }
 
-        &:nth-child(2) {
+        &:nth-child(3) {
           
           & svg {
             height: #{scaleValue(90)};
@@ -86,4 +94,9 @@
         padding-top: #{scaleValue(180)};  
       }
   }
+}
+
+a.ethlink {
+  font-size: #{scaleValue(20)};
+  text-decoration: underline;
 }
