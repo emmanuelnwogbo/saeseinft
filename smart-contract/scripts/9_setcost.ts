@@ -3,7 +3,7 @@ import NftContractProvider from '../lib/NftContractProvider';
 async function main() {
   const contract = await NftContractProvider.getContract();
 
-  await (await contract.setCost(1200000000000000)).wait();
+  await (await contract.setCost(1500000000000000)).wait();
 
   console.log('const to mint changed');
 }

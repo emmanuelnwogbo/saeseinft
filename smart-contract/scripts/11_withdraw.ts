@@ -3,9 +3,9 @@ import NftContractProvider from '../lib/NftContractProvider';
 async function main() {
   const contract = await NftContractProvider.getContract();
 
-  await (await contract.setMaxMintAmountPerTx(10)).wait();
+  await(await (await contract.withdraw()).wait());
 
-  console.log('max mint amount changed');
+  console.log('your funds have been withdrawn')
 }
 
 main().catch((error) => {

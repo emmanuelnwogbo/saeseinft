@@ -154,6 +154,7 @@ export default class MintWidget extends React.Component<Props, State> {
           </div>*/}
           {this.props.totalSupply}/{this.props.maxSupply}
           <a className="ethlink" href="https://etherscan.io/address/0xa35346ef08F731AF6E7D3d1F5B948c1De0AEcc8C#code" target="_blank">0xa35346ef08F731AF6E7D3d1F5B948c1De0AEcc8C</a>
+          <div className="maxmint">10 Max</div>
 
             <div className="main__controls">
               <div className="main__controls--toggle">
