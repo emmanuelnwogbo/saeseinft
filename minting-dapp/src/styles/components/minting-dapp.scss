@@ -15,7 +15,7 @@
   align-items: center;
   margin: #{scaleValue(30)} 0;
   color: #fff;
-  font-size: #{scaleValue(40)};
+  font-size: #{scaleValue(30)};
   overflow-x: hidden;
 
   @media only screen and (max-width: 414px) { 
@@ -81,7 +81,7 @@
 
     &--primary {
       display: block;
-      background: rgba(19, 52, 99, 1);
+      background: crimson;
       color: #fff;
       border: none;
       outline: none;
@@ -140,7 +140,7 @@
     &--photos {
       width: #{scaleValue(980)};
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
 
       & figure {
         width: #{scaleValue(430)};

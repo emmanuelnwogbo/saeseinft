@@ -136,14 +136,11 @@ export default class MintWidget extends React.Component<Props, State> {
       <>
         <Header />
         <div className="main__top" style={{
-          backgroundImage: `url('/build/images/man.png')`
+          backgroundImage: `url('/build/images/art.png')`
         }}>
           <div className="main__top--photos">
             <figure>
-              <img src="/build/images/leftmint.svg"/>
-            </figure>
-            <figure>
-              <img src="/build/images/rightmint.svg"/>
+              <img src="/build/images/3.png"/>
             </figure>
           </div>
 
@@ -177,123 +174,6 @@ export default class MintWidget extends React.Component<Props, State> {
             Please come back during the next sale!
           </div>
         }
-        </div>
-        <div className="main__bottom--padding">
-          <div className="main__bottom--heading">COLLECTION PREVIEW</div>
-        <div className="main__bottom">
-          <figure className="main__bottom--control" onClick={() => this.toggleslide()}>
-            <img src="/build/images/rightarrow.svg"/>
-          </figure>
-          <div className="main__bottomcard main__bottomcard1" style={
-            {
-              transform: this.state.currentSlide === 1 ? 'translateX(0)' : 'translateX(100%)',
-              opacity: this.state.currentSlide === 1 ? '1' : '0',
-            }
-          }>
-            <div className="main__bottomcard--left">
-              <figure>
-                <img src="/build/images/slide1.svg"/>
-              </figure>
-            </div>
-            <div className="main__bottomcard--right">
-              <div className="main__bottomcard--pill">
-                <span>Body</span>
-                <span>body Type1</span>
-              </div>
-              <div className="main__bottomcard--pill">
-                <span>Face</span>
-                <span>empty face</span>
-              </div>
-              <div className="main__bottomcard--pill">
-                <span>eye</span>
-                <span>focused red eyes</span>
-              </div>
-              <div className="main__bottomcard--pill">
-                <span>clothing</span>
-                <span>cyan leather jacket</span>
-              </div>
-              <div className="main__bottomcard--pill">
-                <span>mouth</span>
-                <span>smirk</span>
-              </div>
-              <div className="main__bottomcard--pill">
-                <span>hair</span>
-                <span>gold bob cut</span>
-              </div>
-              <div className="main__bottomcard--pill">
-                <span>eye wear</span>
-                <span>no eyewear</span>
-              </div>
-              <div className="main__bottomcard--pill">
-                <span>ear</span>
-                <span>gold ring2</span>
-              </div>
-              <div className="main__bottomcard--pill">
-                <span>hand</span>
-                <span>wine</span>
-              </div>
-              <div className="main__bottomcard--pill">
-                <span>environ</span>
-                <span>rain</span>
-              </div>
-            </div>
-          </div>
-
-          <div className="main__bottomcard main__bottomcard2" style={
-            {
-              transform: this.state.currentSlide === 2 ? 'translateX(0)' : 'translateX(100%)',
-              opacity: this.state.currentSlide === 2 ? '1' : '0',
-            }
-          }>
-            <div className="main__bottomcard--left">
-              <figure>
-                <img src="/build/images/slide2.svg"/>
-              </figure>
-            </div>
-            <div className="main__bottomcard--right">
-              <div className="main__bottomcard--pill">
-                <span>Body</span>
-                <span>body Type4</span>
-              </div>
-              <div className="main__bottomcard--pill">
-                <span>Face</span>
-                <span>empty face</span>
-              </div>
-              <div className="main__bottomcard--pill">
-                <span>eye</span>
-                <span>focused blue eyes</span>
-              </div>
-              <div className="main__bottomcard--pill">
-                <span>clothing</span>
-                <span>blue kimono</span>
-              </div>
-              <div className="main__bottomcard--pill">
-                <span>mouth</span>
-                <span>slightly opened</span>
-              </div>
-              <div className="main__bottomcard--pill">
-                <span>hair</span>
-                <span>black bob cut</span>
-              </div>
-              <div className="main__bottomcard--pill">
-                <span>eye wear</span>
-                <span>VR</span>
-              </div>
-              <div className="main__bottomcard--pill">
-                <span>ear</span>
-                <span>gold hook</span>
-              </div>
-              <div className="main__bottomcard--pill">
-                <span>hand</span>
-                <span>no hand</span>
-              </div>
-              <div className="main__bottomcard--pill">
-                <span>environ</span>
-                <span>rain</span>
-              </div>
-            </div>
-          </div>
-        </div>
         </div>
       </>
     );

@@ -1,11 +1,6 @@
 {
-  "build/main.css": "/build/main.css",
-  "build/main.js": "/build/main.js",
-  "build/images/slide1.svg": "/build/images/slide1.svg",
-  "build/images/slide2.svg": "/build/images/slide2.svg",
-  "build/images/rightmint.svg": "/build/images/rightmint.svg",
-  "build/images/leftmint.svg": "/build/images/leftmint.svg",
-  "build/images/man.png": "/build/images/man.png",
-  "build/images/logo.svg": "/build/images/logo.svg",
-  "build/images/rightarrow.svg": "/build/images/rightarrow.svg"
+  "build/main.css": "http://localhost:8080/build/main.css",
+  "build/main.js": "http://localhost:8080/build/main.js",
+  "build/images/art.png": "http://localhost:8080/build/images/art.png",
+  "build/images/3.png": "http://localhost:8080/build/images/3.png"
 }

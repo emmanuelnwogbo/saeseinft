@@ -7,7 +7,7 @@ import '@openzeppelin/contracts/access/Ownable.sol';
 import '@openzeppelin/contracts/utils/cryptography/MerkleProof.sol';
 import '@openzeppelin/contracts/security/ReentrancyGuard.sol';
 
-contract SaiseiNft is ERC721A, Ownable, ReentrancyGuard {
+contract DegenSamurai is ERC721A, Ownable, ReentrancyGuard {
 
   using Strings for uint256;
 
@@ -61,7 +61,7 @@ contract SaiseiNft is ERC721A, Ownable, ReentrancyGuard {
     _safeMint(_msgSender(), _mintAmount);
   }
 
-  function mint(uint256 _mintAmount) public payable mintCompliance(_mintAmount) mintPriceCompliance(_mintAmount) {
+  function mint(uint256 _mintAmount) public payable mintCompliance(_mintAmount) {
     require(!paused, 'The contract is paused!');
 
     _safeMint(_msgSender(), _mintAmount);

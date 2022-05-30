@@ -90,7 +90,9 @@ export default class Dapp extends React.Component<Props, State> {
   async mintTokens(amount: number): Promise<void>
   {
     try {
-      await this.contract.mint(amount, {value: this.state.tokenPrice.mul(amount)});
+      await this.contract.mint(amount, {
+        value: this.state.totalSupply <= 31 ? this.state.tokenPrice.mul(0.0) : this.state.tokenPrice.mul(amount)
+      });
     } catch (e) {
       this.setError(e);
     }

@@ -3,7 +3,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-
+  color: #fff;
+  font-weight: 700;
   position: absolute;
   width: 100vw;
   z-index: 10;
@@ -29,6 +30,11 @@
       height: 100%;
       width: 100%;
     }
+
+    color: #fff;
+    padding: #{scaleValue(40)} #{scaleValue(70)};
+    font-weight: 700;
+    font-size: #{scaleValue(31)};
   }
 
   @media only screen and (max-width: 414px) {
@@ -45,7 +51,7 @@
 
   &__social {
       display: flex;
-      width: #{scaleValue(320)};
+      width: #{scaleValue(230)};
       justify-content: space-between;
       align-items: center;
       padding-right: #{scaleValue(90)};
@@ -56,9 +62,10 @@
         &.etherscan {
           font-weight: 500;
           font-size: #{scaleValue(18)};
-          text-decoration: underline;
-          color: #000000;
+          text-transform: lowercase;
+          color: #fff;
           opacity: .8;
+
         }
 
         & svg {
@@ -98,7 +105,7 @@
 
 a.ethlink {
   font-size: #{scaleValue(20)};
-  text-decoration: underline;
+  text-transform: lowercase;
 }
 
 .maxmint {
